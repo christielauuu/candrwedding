@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christie & Randy's Wedding</title>
+    <style>
+        :root {
+            --bg-color: #f2f6f4;
+            --warm-sand: #f2e6c9;
+            --blush: #ebc4b2;
+            --soft-sage: #b7c4b4;
+            --deep-sage: #6f8676;
+            --slate: #bcc8cc;
+            --text-dark: #3a473f;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+        }
+
+        header {
+            text-align: center;
+            padding: 70px 20px 50px 20px;
+            background-color: var(--warm-sand);
+            border-bottom: 4px solid var(--soft-sage);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--deep-sage);
+            margin: 0;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--deep-sage);
+            margin-top: 12px;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--slate);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--deep-sage);
+            padding: 16px 18px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            background-color: var(--bg-color);
+            color: var(--blush);
+        }
+
+        section {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 35px 25px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(111, 134, 118, 0.08);
+            border-top: 5px solid var(--soft-sage);
+        }
+
+        h2 {
+            color: var(--deep-sage);
+            border-bottom: 2px solid var(--warm-sand);
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* --- 1. PHOTO GALLERY STYLES --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--slate);
+            transition: transform 0.2s ease;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.02);
+        }
+
+        /* --- 2. WEDDING DETAILS STYLES --- */
+        .details-box {
+            background-color: var(--bg-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--blush);
+        }
+
+        .details-box h3 {
+            margin-top: 0;
+            color: var(--deep-sage);
+        }
+
+        .bilingual-note {
+            font-size: 0.92rem;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        /* --- 3. RSVP SESSION STYLES --- */
+        .rsvp-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 110%; /* Responsive ratio for Google Forms */
+            border-radius: 8px;
+        }
+
+        .rsvp-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--deep-sage);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CHRISTIE & RANDY</h1>
+        <p>We're Getting Married! | 我們要結婚了！</p>
+    </header>
+
+    <nav>
+        <a href="#intro">Story</a>
+        <a href="#details">Details</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#rsvp">RSVP</a>
+    </nav>
+
+    <!-- SECTION 4: WEDDING INTRODUCTION -->
+    <section id="intro">
+        <h2>Our Story | 我們的故事</h2>
+        <p>Welcome to our wedding website! We are beyond excited to celebrate this big milestone with all of our dearest friends and family.</p>
+        <p class="bilingual-note">歡迎來到我們的婚禮網站！非常期待與各位親朋好友一同分享我們這份喜悅與幸福。</p>
+    </section>
+
+    <!-- SECTION 2: WEDDING DETAILS -->
+    <section id="details">
+        <h2>Wedding Details | 婚禮詳情</h2>
+        
+        <div class="details-box">
+            <h3>Date | 日期</h3>
+            <p><strong>Saturday, December 18, 2027</strong><br>2027年12月18日（星期六）</p>
+        </div>
+
+        <div class="details-box">
+            <h3>Schedule | 時間表</h3>
+            <p><strong>Ceremony (證婚儀式):</strong> 11:00 AM – 12:00 PM<br>
+            <strong>Luncheon (婚宴午宴):</strong> 12:30 PM – 3:00 PM</p>
+        </div>
+
+        <div class="details-box">
+            <h3>Venue & Location | 地點</h3>
+            <p><strong>The Murray, Hong Kong</strong><br>
+            22 Cotton Tree Drive, Central, Hong Kong<br>
+            <em>MTR: Central Station, Exit J2 or Admiralty Station, Exit C1</em></p>
+            <p class="bilingual-note">香港美利酒店 | 中環紅棉路22號（港鐵中環站 J2 出口或金鐘站 C1 出口）</p>
+        </div>
+    </section>
+
+    <!-- SECTION 1: PHOTO GALLERY -->
+    <section id="gallery">
+        <h2>Photo Gallery | 相片集</h2>
+        <p class="bilingual-note">A glimpse into our favorite moments together.</p>
+        
+        <div class="gallery-grid">
+            <!-- =================================================================
+                 PHOTO UPLOAD INSTRUCTIONS:
+                 Replace the "https://picsum.photos/..." URLs below with your own 
+                 image file names or web links. 
+                 
+                 Example 1 (If image is in your GitHub repo):
+                 src="photo1.jpg"
+                 
+                 Example 2 (If image is in an 'images' subfolder):
+                 src="images/prewedding_1.jpg"
+            ================================================================== -->
+            
+            <!-- PHOTO 1 -->
+            <img src="https://picsum.photos/400/400?random=1" alt="Christie & Randy Photo 1">
+
+            <!-- PHOTO 2 -->
+            <img src="https://picsum.photos/400/400?random=2" alt="Christie & Randy Photo 2">
+
+            <!-- PHOTO 3 -->
+            <img src="https://picsum.photos/400/400?random=3" alt="Christie & Randy Photo 3">
+
+            <!-- PHOTO 4 -->
+            <img src="https://picsum.photos/400/400?random=4" alt="Christie & Randy Photo 4">
+            
+            <!-- =================================================================
+                 END OF PHOTO SECTION
+            ================================================================== -->
+        </div>
+    </section>
+
+    <!-- SECTION 3: RSVP SESSION -->
+    <section id="rsvp">
+        <h2>RSVP | 回覆出席</h2>
+        <p>Please kindly respond to let us know if you can join our celebration!</p>
+        <p class="bilingual-note">請填妥以下表格，回覆您會否出席我們的婚禮宴會。</p>
+        
+        <div class="rsvp-container">
+            <!-- 
+                 REPLACE THE LINK BELOW WITH YOUR GOOGLE FORM EMBED LINK:
+                 1. Go to Google Forms -> Click "Send"
+                 2. Click the "< >" embed HTML tab -> Copy the "src" URL
+                 3. Paste it inside src="" below:
+            -->
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc_EXAMPLE_LINK/viewform?embedded=true">Loading…</iframe>
+        </div>
+    </section>
+
+    <footer>
+        <p>Designed with ❤️ for Christie & Randy | See you on Dec 18, 2027!</p>
+    </footer>
+
+</body>
+</html>
