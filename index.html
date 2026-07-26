@@ -1,267 +1,515 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christie & Randy's Wedding</title>
+    <!-- Romantic & Handwritten Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f2f6f4;
-            --warm-sand: #f2e6c9;
-            --blush: #ebc4b2;
-            --soft-sage: #b7c4b4;
-            --deep-sage: #6f8676;
-            --slate: #bcc8cc;
+            --bg-blush: #e2c2b3;
+            --bg-cream: #f4efe6;
+            --bg-sage: #6a7f72;
+            --bg-blue: #bdc8cd;
+            
             --text-dark: #3a473f;
-            --card-bg: #ffffff;
+            --text-green: #485b4e;
+            --polaroid-bg: #fcfbf9;
+            --card-sage: #586b5e;
+            --card-cream: #fdfbf7;
+            --tape-color: rgba(235, 230, 215, 0.7);
         }
 
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Montserrat', sans-serif;
             color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            line-height: 1.7;
+            background-color: var(--bg-cream);
+            overflow-x: hidden;
         }
 
-        header {
-            text-align: center;
-            padding: 70px 20px 50px 20px;
-            background-color: var(--warm-sand);
-            border-bottom: 4px solid var(--soft-sage);
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            color: var(--deep-sage);
-            margin: 0;
-            font-weight: 300;
-            letter-spacing: 3px;
-        }
-
-        header p {
-            font-size: 1.1rem;
-            color: var(--deep-sage);
-            margin-top: 12px;
-            letter-spacing: 1px;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            background: var(--card-bg);
-            border-bottom: 1px solid var(--slate);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav a {
-            color: var(--deep-sage);
-            padding: 16px 18px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-        }
-
-        nav a:hover {
-            background-color: var(--bg-color);
-            color: var(--blush);
-        }
-
-        section {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 35px 25px;
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(111, 134, 118, 0.08);
-            border-top: 5px solid var(--soft-sage);
-        }
-
-        h2 {
-            color: var(--deep-sage);
-            border-bottom: 2px solid var(--warm-sand);
-            padding-bottom: 10px;
-            margin-top: 0;
+        /* --- TYPOGRAPHY --- */
+        .script-title {
+            font-family: 'Alex Brush', cursive;
             font-weight: 400;
-            letter-spacing: 1px;
+            text-align: center;
         }
 
-        /* --- 1. PHOTO GALLERY STYLES --- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+        .serif-title {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        .gallery-grid img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 2px solid var(--slate);
-            transition: transform 0.2s ease;
-        }
-
-        .gallery-grid img:hover {
-            transform: scale(1.02);
-        }
-
-        /* --- 2. WEDDING DETAILS STYLES --- */
-        .details-box {
-            background-color: var(--bg-color);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--blush);
-        }
-
-        .details-box h3 {
-            margin-top: 0;
-            color: var(--deep-sage);
-        }
-
-        .bilingual-note {
-            font-size: 0.92rem;
-            color: #666;
-            margin-top: 4px;
-        }
-
-        /* --- 3. RSVP SESSION STYLES --- */
-        .rsvp-container {
+        /* --- POLAROID & SCRAPBOOK EFFECTS --- */
+        .polaroid {
+            background: var(--polaroid-bg);
+            padding: 12px 12px 35px 12px;
+            box-shadow: 3px 5px 15px rgba(0,0,0,0.12);
             position: relative;
-            overflow: hidden;
-            width: 100%;
-            padding-top: 110%; /* Responsive ratio for Google Forms */
-            border-radius: 8px;
+            display: inline-block;
+            transition: transform 0.3s ease;
         }
 
-        .rsvp-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .polaroid img {
             width: 100%;
             height: 100%;
-            border: 0;
+            object-fit: cover;
+            display: block;
         }
 
-        footer {
+        /* Washi Tape Effect */
+        .tape {
+            position: absolute;
+            width: 90px;
+            height: 25px;
+            background-color: var(--tape-color);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            z-index: 10;
+            backdrop-filter: blur(1px);
+        }
+
+        .tape-top { top: -12px; left: 50%; transform: translateX(-50%) rotate(-2deg); }
+        .tape-left { top: -10px; left: -20px; transform: rotate(-25deg); }
+        .tape-right { top: -10px; right: -20px; transform: rotate(15deg); }
+
+        /* Paper Card Effect */
+        .paper-card {
+            background: var(--card-sage);
+            color: #ffffff;
+            padding: 25px;
+            box-shadow: 2px 4px 12px rgba(0,0,0,0.15);
+            font-family: 'Cinzel', serif;
+            position: relative;
+        }
+
+        /* --- SECTIONS --- */
+        section {
+            padding: 60px 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* SECTION 1: HEADER & HERO */
+        .sec-hero {
+            background-color: var(--bg-blush);
+            min-height: 90vh;
             text-align: center;
-            padding: 30px;
-            color: var(--deep-sage);
+        }
+
+        .sec-hero .subtitle {
             font-size: 0.9rem;
+            letter-spacing: 3px;
+            color: var(--text-green);
+            margin-bottom: -10px;
+        }
+
+        .sec-hero h1 {
+            font-size: 4rem;
+            color: var(--text-green);
+            margin-bottom: 20px;
+        }
+
+        .hero-polaroid {
+            width: 280px;
+            height: 320px;
+            transform: rotate(-1deg);
+            margin: 20px 0 30px 0;
+        }
+
+        .hero-nav {
+            display: flex;
+            gap: 150px;
+            position: absolute;
+            top: 45%;
+            width: 100%;
+            max-width: 600px;
+            justify-content: space-between;
+        }
+
+        .hero-nav a {
+            text-decoration: none;
+            color: var(--text-green);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .hero-footer-text {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            color: var(--text-green);
+            margin-top: 15px;
+        }
+
+        /* SECTION 2: TIMELINE / INVITATION collage */
+        .sec-timeline {
+            background-color: var(--bg-cream);
+            padding: 80px 20px;
+        }
+
+        .collage-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 450px;
+            margin: 0 auto;
+        }
+
+        .pol-left {
+            width: 200px;
+            height: 220px;
+            position: absolute;
+            left: 0;
+            top: 20px;
+            transform: rotate(-6deg);
+            z-index: 2;
+        }
+
+        .card-details {
+            width: 200px;
+            position: absolute;
+            right: 20px;
+            top: 0px;
+            transform: rotate(3deg);
+            z-index: 3;
+            text-align: center;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .pol-right {
+            width: 180px;
+            height: 200px;
+            position: absolute;
+            right: 0;
+            bottom: 20px;
+            transform: rotate(8deg);
+            z-index: 1;
+        }
+
+        .card-monogram {
+            width: 220px;
+            position: absolute;
+            left: 50px;
+            bottom: 40px;
+            transform: rotate(-2deg);
+            z-index: 4;
+            background: #506255;
+            text-align: center;
+        }
+
+        /* SECTION 3: ABOUT THE WEDDING */
+        .sec-about {
+            background-color: var(--bg-sage);
+            color: #ffffff;
+            padding: 80px 20px;
+        }
+
+        .about-layout {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 900px;
+            width: 100%;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .about-text h2 {
+            font-size: 3.5rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .about-text p {
+            font-size: 0.85rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .schedule-list {
+            list-style: none;
+            font-size: 0.85rem;
+            line-height: 2;
+        }
+
+        .about-photos {
+            position: relative;
+            width: 280px;
+            height: 380px;
+        }
+
+        .ab-pol-1 {
+            width: 200px;
+            height: 220px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: rotate(5deg);
+        }
+
+        .ab-pol-2 {
+            width: 200px;
+            height: 220px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transform: rotate(-7deg);
+        }
+
+        /* SECTION 4: DRESS CODE */
+        .sec-dress {
+            background-color: var(--bg-cream);
+            text-align: center;
+        }
+
+        .sec-dress h2 {
+            font-size: 3.5rem;
+            color: #8c3b3b;
+            margin-bottom: 40px;
+        }
+
+        .swatch-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .swatch-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .swatch-box {
+            width: 60px;
+            height: 80px;
+            box-shadow: 2px 3px 8px rgba(0,0,0,0.1);
+            margin-bottom: 12px;
+        }
+
+        .swatch-label {
+            font-family: 'Alex Brush', cursive;
+            font-size: 1.5rem;
+            color: #8c3b3b;
+        }
+
+        /* SECTION 5: RSVP & CONTACT */
+        .sec-rsvp {
+            background-color: var(--bg-blue);
+            padding: 80px 20px;
+        }
+
+        .rsvp-layout {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            min-height: 450px;
+            margin: 0 auto;
+        }
+
+        .rsvp-card-white {
+            background: #ffffff;
+            padding: 30px;
+            width: 220px;
+            box-shadow: 2px 4px 12px rgba(0,0,0,0.1);
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            transform: rotate(-4deg);
+            z-index: 3;
+            text-align: center;
+        }
+
+        .rsvp-card-white h3 {
+            font-family: 'Alex Brush', cursive;
+            font-size: 2.2rem;
+            color: #4a5d52;
+        }
+
+        .rsvp-photo {
+            width: 240px;
+            height: 260px;
+            position: absolute;
+            right: 40px;
+            top: 0px;
+            transform: rotate(4deg);
+            z-index: 1;
+        }
+
+        .contact-card-yellow {
+            background: var(--card-cream);
+            padding: 25px;
+            width: 220px;
+            box-shadow: 2px 4px 12px rgba(0,0,0,0.1);
+            position: absolute;
+            right: 60px;
+            bottom: 10px;
+            transform: rotate(-2deg);
+            z-index: 4;
+            font-size: 0.8rem;
+            color: var(--text-green);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .hero-nav { display: none; }
+            .about-layout { flex-direction: column; }
+            .collage-container, .rsvp-layout { scale: 0.85; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>CHRISTIE & RANDY</h1>
-        <p>We're Getting Married! | 我們要結婚了！</p>
-    </header>
+    <!-- 1. HERO SECTION -->
+    <section class="sec-hero">
+        <p class="subtitle serif-title">A SPECIAL NOTE FROM</p>
+        <h1 class="script-title">Christie and Randy</h1>
 
-    <nav>
-        <a href="#intro">Story</a>
-        <a href="#details">Details</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#rsvp">RSVP</a>
-    </nav>
+        <div class="hero-nav serif-title">
+            <a href="#about">ITINERARY</a>
+            <a href="#about">DETAILS</a>
+        </div>
 
-    <!-- SECTION 4: WEDDING INTRODUCTION -->
-    <section id="intro">
-        <h2>Our Story | 我們的故事</h2>
-        <p>Welcome to our wedding website! We are beyond excited to celebrate this big milestone with all of our dearest friends and family.</p>
-        <p class="bilingual-note">歡迎來到我們的婚禮網站！非常期待與各位親朋好友一同分享我們這份喜悅與幸福。</p>
+        <div class="polaroid hero-polaroid">
+            <div class="tape tape-top"></div>
+            <!-- PHOTO 1: Hero Top Photo -->
+            <img src="https://picsum.photos/400/500?random=1" alt="Christie and Randy">
+        </div>
+
+        <p class="hero-footer-text serif-title">WE'RE FINALLY GETTING MARRIED !</p>
     </section>
 
-    <!-- SECTION 2: WEDDING DETAILS -->
-    <section id="details">
-        <h2>Wedding Details | 婚禮詳情</h2>
-        
-        <div class="details-box">
-            <h3>Date | 日期</h3>
-            <p><strong>Saturday, December 18, 2027</strong><br>2027年12月18日（星期六）</p>
-        </div>
+    <!-- 2. TIMELINE COLLAGE SECTION -->
+    <section class="sec-timeline">
+        <div class="collage-container">
+            <!-- PHOTO 2: Left Polaroid -->
+            <div class="polaroid pol-left">
+                <img src="https://picsum.photos/300/300?random=2" alt="Photo">
+            </div>
 
-        <div class="details-box">
-            <h3>Schedule | 時間表</h3>
-            <p><strong>Ceremony (證婚儀式):</strong> 11:00 AM – 12:00 PM<br>
-            <strong>Luncheon (婚宴午宴):</strong> 12:30 PM – 3:00 PM</p>
-        </div>
+            <!-- Date & Venue Card -->
+            <div class="paper-card card-details">
+                <p style="margin-bottom: 8px;">DECEMBER 18, 2027</p>
+                <hr style="border: 0.5px solid rgba(255,255,255,0.3); margin: 8px 0;">
+                <p>THE MURRAY,<br>HONG KONG</p>
+                <hr style="border: 0.5px solid rgba(255,255,255,0.3); margin: 8px 0;">
+                <p style="font-size: 0.75rem;">CEREMONY: 11:00 - 12:00PM<br>LUNCHEON: 12:30 - 3:00PM</p>
+            </div>
 
-        <div class="details-box">
-            <h3>Venue & Location | 地點</h3>
-            <p><strong>The Murray, Hong Kong</strong><br>
-            22 Cotton Tree Drive, Central, Hong Kong<br>
-            <em>MTR: Central Station, Exit J2 or Admiralty Station, Exit C1</em></p>
-            <p class="bilingual-note">香港美利酒店 | 中環紅棉路22號（港鐵中環站 J2 出口或金鐘站 C1 出口）</p>
-        </div>
-    </section>
+            <!-- Monogram Card -->
+            <div class="paper-card card-monogram">
+                <h1 style="font-family: 'Alex Brush', cursive; font-weight: 300; font-size: 2.5rem;">CR</h1>
+                <p style="font-size: 0.7rem; letter-spacing: 2px;">CHRISTIE & RANDY</p>
+            </div>
 
-    <!-- SECTION 1: PHOTO GALLERY -->
-    <section id="gallery">
-        <h2>Photo Gallery | 相片集</h2>
-        <p class="bilingual-note">A glimpse into our favorite moments together.</p>
-        
-        <div class="gallery-grid">
-            <!-- =================================================================
-                 PHOTO UPLOAD INSTRUCTIONS:
-                 Replace the "https://picsum.photos/..." URLs below with your own 
-                 image file names or web links. 
-                 
-                 Example 1 (If image is in your GitHub repo):
-                 src="photo1.jpg"
-                 
-                 Example 2 (If image is in an 'images' subfolder):
-                 src="images/prewedding_1.jpg"
-            ================================================================== -->
-            
-            <!-- PHOTO 1 -->
-            <img src="https://picsum.photos/400/400?random=1" alt="Christie & Randy Photo 1">
-
-            <!-- PHOTO 2 -->
-            <img src="https://picsum.photos/400/400?random=2" alt="Christie & Randy Photo 2">
-
-            <!-- PHOTO 3 -->
-            <img src="https://picsum.photos/400/400?random=3" alt="Christie & Randy Photo 3">
-
-            <!-- PHOTO 4 -->
-            <img src="https://picsum.photos/400/400?random=4" alt="Christie & Randy Photo 4">
-            
-            <!-- =================================================================
-                 END OF PHOTO SECTION
-            ================================================================== -->
+            <!-- PHOTO 3: Right Polaroid -->
+            <div class="polaroid pol-right">
+                <img src="https://picsum.photos/300/300?random=3" alt="Photo">
+            </div>
         </div>
     </section>
 
-    <!-- SECTION 3: RSVP SESSION -->
-    <section id="rsvp">
-        <h2>RSVP | 回覆出席</h2>
-        <p>Please kindly respond to let us know if you can join our celebration!</p>
-        <p class="bilingual-note">請填妥以下表格，回覆您會否出席我們的婚禮宴會。</p>
-        
-        <div class="rsvp-container">
-            <!-- 
-                 REPLACE THE LINK BELOW WITH YOUR GOOGLE FORM EMBED LINK:
-                 1. Go to Google Forms -> Click "Send"
-                 2. Click the "< >" embed HTML tab -> Copy the "src" URL
-                 3. Paste it inside src="" below:
-            -->
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc_EXAMPLE_LINK/viewform?embedded=true">Loading…</iframe>
+    <!-- 3. ABOUT THE WEDDING SECTION -->
+    <section class="sec-about" id="about">
+        <div class="about-layout">
+            <div class="about-text">
+                <h2 class="script-title">About the Wedding</h2>
+                <p>Join us on our special day! We warmly invite you to join us as we celebrate the beginning of our new chapter together. Please find our event itinerary below for all ceremony and banquet timings.</p>
+                
+                <ul class="schedule-list">
+                    <li>• <strong>10:30 AM</strong> | Ceremony Guest Arrival (The Arches, Level 1)</li>
+                    <li>• <strong>11:00 AM</strong> | Marriage Ceremony (The Arches, Level 1)</li>
+                    <li>• <strong>12:15 PM</strong> | Luncheon Reception (Niccolo Room, Level 25)</li>
+                    <li>• <strong>12:45 PM</strong> | Luncheon Banquet (Niccolo Room, Level 25)</li>
+                </ul>
+
+                <p style="margin-top: 25px; font-style: italic;">Thank you for being a part of our story — see you there!</p>
+            </div>
+
+            <div class="about-photos">
+                <!-- PHOTO 4: Top Taped Polaroid -->
+                <div class="polaroid ab-pol-1">
+                    <div class="tape tape-left"></div>
+                    <img src="https://picsum.photos/300/300?random=4" alt="Us">
+                </div>
+                <!-- PHOTO 5: Bottom Taped Polaroid -->
+                <div class="polaroid ab-pol-2">
+                    <div class="tape tape-right"></div>
+                    <img src="https://picsum.photos/300/300?random=5" alt="Us">
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <p>Designed with ❤️ for Christie & Randy | See you on Dec 18, 2027!</p>
-    </footer>
+    <!-- 4. DRESS CODE SECTION -->
+    <section class="sec-dress">
+        <h2 class="script-title">Dress Code</h2>
+        <div class="swatch-grid">
+            <div class="swatch-item">
+                <div class="swatch-box" style="background-color: #6a7f72;"></div>
+                <span class="swatch-label">Sea Green</span>
+            </div>
+            <div class="swatch-item">
+                <div class="swatch-box" style="background-color: #b7c4b4;"></div>
+                <span class="swatch-label">Lichen</span>
+            </div>
+            <div class="swatch-item">
+                <div class="swatch-box" style="background-color: #e2c2b3;"></div>
+                <span class="swatch-label">Dusty Peach</span>
+            </div>
+            <div class="swatch-item">
+                <div class="swatch-box" style="background-color: #bdc8cd;"></div>
+                <span class="swatch-label">Baby Blue</span>
+            </div>
+            <div class="swatch-item">
+                <div class="swatch-box" style="background-color: #ffffff; border: 1px solid #ddd;"></div>
+                <span class="swatch-label">Pearl</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. RSVP & CONTACT SECTION -->
+    <section class="sec-rsvp">
+        <div class="rsvp-layout">
+            <!-- RSVP Deadline Card -->
+            <div class="rsvp-card-white">
+                <h3>Rsvp by</h3>
+                <p class="serif-title" style="font-size: 0.8rem; margin-top: 5px; color: #666;">OCTOBER 1, 2027</p>
+            </div>
+
+            <!-- PHOTO 6: RSVP Polaroid -->
+            <div class="polaroid rsvp-photo">
+                <img src="https://picsum.photos/300/300?random=6" alt="Us">
+            </div>
+
+            <!-- Contact Note Card -->
+            <div class="contact-card-yellow">
+                <div class="tape tape-top"></div>
+                <p style="text-align: center; margin-bottom: 8px;">Do not hesitate to ask any questions in advance!</p>
+                <p style="text-align: center; font-weight: 600;">+852 9876 5432</p>
+                <p style="text-align: center; font-size: 0.75rem; margin-top: 4px;">randy.and.christie@gmail.com</p>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
